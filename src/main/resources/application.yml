@@ -1,0 +1,8 @@
+nio-server:
+  host: localhost
+  port: 8080
+
+# 日志配置
+logging:
+  level: warn
+

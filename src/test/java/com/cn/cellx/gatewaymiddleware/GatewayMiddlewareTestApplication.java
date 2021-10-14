@@ -1,29 +1,31 @@
 package com.cn.cellx.gatewaymiddleware;
 
+import com.cn.cellx.gatewaymiddleware.NIOClient.NIOClient;
 import com.cn.cellx.gatewaymiddleware.NIOServer.NIOServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.net.InetSocketAddress;
 
 @SpringBootApplication
-public class GatewayMiddlewareApplication {
+public class GatewayMiddlewareTestApplication {
 
     @Autowired
-    private NIOServer nioServer;
+    private NIOClient nioClient;
 
-    private static NIOServer nioServerStatic;
+    private static NIOClient nioClientStatic;
 
     @PostConstruct
     public void initialize() {
-        GatewayMiddlewareApplication.nioServerStatic = nioServer;
+        nioClientStatic = nioClient;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayMiddlewareApplication.class, args);
+        SpringApplication.run(GatewayMiddlewareTestApplication.class, args);
 
-        nioServerStatic.start();
+        nioClientStatic.start();
     }
 
 }
