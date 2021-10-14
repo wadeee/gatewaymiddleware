@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GatewaymiddlewareApplication {
+public class GatewayMiddlewareApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewaymiddlewareApplication.class, args);
+        SpringApplication.run(GatewayMiddlewareApplication.class, args);
     }
 
 }
