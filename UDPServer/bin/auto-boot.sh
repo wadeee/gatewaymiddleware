@@ -19,9 +19,9 @@ cd ./UDPServer/
 
 ## firewall
 ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "setsebool -P httpd_can_network_connect 1"
-ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "firewall-cmd --add-port=${boot_port}/tcp --zone=public --permanent"
+ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "firewall-cmd --add-port=${boot_port}/udp --zone=public --permanent"
 ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "firewall-cmd --reload"
-ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "semanage port -a -t http_port_t -p tcp ${boot_port}"
+ssh -p ${remote_port} -i ${ssh_key} ${remote_user}@"${remote_host}" "semanage port -a -t http_port_t -p udp ${boot_port}"
 
 ## upload jar
 scp -P ${remote_port} -i ${ssh_key} ./target/UDPServer.jar ${remote_user}@"${remote_host}":/root/jars/UDPServer.jar
