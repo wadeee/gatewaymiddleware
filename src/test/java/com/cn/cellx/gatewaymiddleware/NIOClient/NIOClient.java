@@ -41,7 +41,6 @@ public class NIOClient {
         try {
             ChannelFuture future = bootstrap.connect(nioServerConfig.getHost(), nioServerConfig.getPort()).sync();
             log.info("客户端成功....");
-            System.out.println("send");
             //发送消息
             future.channel().writeAndFlush("你好啊");
             future.channel().writeAndFlush("我给你发啥你就给我发啥");
