@@ -1,6 +1,6 @@
 package com.cn.cellx.gatewaymiddleware;
 
-import com.cn.cellx.gatewaymiddleware.NIOServer.NIOServer;
+import com.cn.cellx.gatewaymiddleware.NIOClient.NIOClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,22 +8,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
-public class GatewayMiddlewareApplication {
+public class NIOClientApplication {
 
     @Autowired
-    private NIOServer nioServer;
+    private NIOClient nioClient;
 
-    private static NIOServer nioServerStatic;
+    private static NIOClient nioClientStatic;
 
     @PostConstruct
     public void initialize() {
-        GatewayMiddlewareApplication.nioServerStatic = nioServer;
+        nioClientStatic = nioClient;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayMiddlewareApplication.class, args);
+        SpringApplication.run(NIOClientApplication.class, args);
 
-        nioServerStatic.start();
+        nioClientStatic.start();
     }
 
 }

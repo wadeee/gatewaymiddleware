@@ -1,6 +1,6 @@
 package com.cn.cellx.gatewaymiddleware;
 
-import com.cn.cellx.gatewaymiddleware.NIOClient.NIOClient;
+import com.cn.cellx.gatewaymiddleware.UDPServer.UDPServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,22 +8,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
-public class GatewayMiddlewareTestApplication {
+public class UDPServerApplication {
 
     @Autowired
-    private NIOClient nioClient;
+    private UDPServer udpServer;
 
-    private static NIOClient nioClientStatic;
+    private static UDPServer udpServerStatic;
 
     @PostConstruct
     public void initialize() {
-        nioClientStatic = nioClient;
+        UDPServerApplication.udpServerStatic = udpServer;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(GatewayMiddlewareTestApplication.class, args);
+        SpringApplication.run(UDPServerApplication.class, args);
 
-        nioClientStatic.start();
+        udpServerStatic.start();
     }
 
 }
