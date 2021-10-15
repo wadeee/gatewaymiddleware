@@ -1,0 +1,7 @@
+[Unit]
+Description=gatewaymiddleware
+[Service]
+TimeoutStartSec=0
+ExecStart=/bin/java -jar /root/jars/gatewaymiddleware.jar --spring.profiles.active=prod
+[Install]
+WantedBy=multi-user.target
