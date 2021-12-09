@@ -4,6 +4,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Scanner;
+
 /**
  * Copyright (C) 2021 CellX  All Rights Reserved
  * This software and code can be freely used for study and research.
@@ -25,6 +27,11 @@ public class NIOClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         log.info("客户端收到消息: {}", msg.toString());
+        System.out.println("请输入发送内容：");
+        Scanner input=new Scanner(System.in);
+        String str=input.next();
+        ctx.write(str);
+        ctx.flush();
     }
 
     @Override

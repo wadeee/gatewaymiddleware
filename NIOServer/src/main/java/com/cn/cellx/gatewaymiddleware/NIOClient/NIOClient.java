@@ -46,7 +46,6 @@ public class NIOClient {
             future.channel().writeAndFlush("我给你发啥你就给我发啥");
             // 等待连接被关闭
             future.channel().closeFuture().sync();
-            System.out.println("sended");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
