@@ -1,7 +1,7 @@
 package com.cn.cellx.gatewaymiddleware;
 
 import com.cn.cellx.gatewaymiddleware.UDPClient.UDPClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.cn.cellx.gatewaymiddleware.utils.spring.SpringUtils;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,14 +10,11 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class UDPClientApplication {
 
-    @Autowired
-    private UDPClient udpClient;
-
     private static UDPClient udpClientStatic;
 
     @PostConstruct
     public void initialize() {
-        udpClientStatic = udpClient;
+        udpClientStatic = SpringUtils.getBean(UDPClient.class);
     }
 
     public static void main(String[] args) {
