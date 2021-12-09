@@ -18,10 +18,22 @@
         <netty.version>4.1.69.Final</netty.version>
         <spring-boot.version>2.5.5</spring-boot.version>
         <lombok.version>1.18.22</lombok.version>
+        <commons.io.version>2.5</commons.io.version>
+        <fastjson.version>1.2.76</fastjson.version>
+        <gatewaymiddleware.version>1.0</gatewaymiddleware.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -45,12 +57,28 @@
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
             </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.cn.cellx</groupId>
+                <artifactId>common</artifactId>
+                <version>${gatewaymiddleware.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
         <module>NIOServer</module>
         <module>UDPServer</module>
+        <module>common</module>
     </modules>
     <packaging>pom</packaging>
 

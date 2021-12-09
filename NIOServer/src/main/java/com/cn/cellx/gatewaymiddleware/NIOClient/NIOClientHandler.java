@@ -30,8 +30,11 @@ public class NIOClientHandler extends ChannelInboundHandlerAdapter {
         System.out.println("请输入发送内容：");
         Scanner input=new Scanner(System.in);
         String str=input.next();
-        ctx.write(str);
-        ctx.flush();
+        if ("exit".equals(str)) {
+            ctx.close();
+            return;
+        }
+        ctx.writeAndFlush(str);
     }
 
     @Override
