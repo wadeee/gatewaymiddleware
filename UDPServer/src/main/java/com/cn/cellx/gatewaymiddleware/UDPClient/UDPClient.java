@@ -35,14 +35,7 @@ public class UDPClient {
             bootstrap.group(group)
                     .channel(NioDatagramChannel.class)
                     .handler(new UDPClientInitializer());
-//            for (int i = 0; i < 3; i++) {
-//                Channel channel = bootstrap.bind(19345).sync().channel();
-//                InetSocketAddress address = new InetSocketAddress(udpServerConfig.getHost(), udpServerConfig.getPort());
-//                ByteBuf byteBuf = Unpooled.copiedBuffer("你好服务器".getBytes(StandardCharsets.UTF_8));
-//                channel.writeAndFlush(new DatagramPacket(byteBuf, address)).sync();
-//                channel.closeFuture().await();
-//            }
-            Channel channel = bootstrap.bind(19345).sync().channel();
+            Channel channel = bootstrap.bind(0).sync().channel();
             InetSocketAddress address = new InetSocketAddress(udpServerConfig.getHost(), udpServerConfig.getPort());
             ByteBuf byteBuf = Unpooled.copiedBuffer("你好服务器".getBytes(StandardCharsets.UTF_8));
             channel.writeAndFlush(new DatagramPacket(byteBuf, address)).sync();

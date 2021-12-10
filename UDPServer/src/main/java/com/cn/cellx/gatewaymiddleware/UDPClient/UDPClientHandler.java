@@ -1,6 +1,6 @@
 package com.cn.cellx.gatewaymiddleware.UDPClient;
 
-import com.sun.xml.internal.ws.util.StringUtils;
+import com.cn.cellx.gatewaymiddleware.utils.StringUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -26,7 +26,7 @@ public class UDPClientHandler extends SimpleChannelInboundHandler<DatagramPacket
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, DatagramPacket packet) {
-        System.out.println("客户端接收到消息：" + packet.content().toString(StandardCharsets.UTF_8));
+        System.out.println(StringUtils.format("Data: {}; IP: {}; port: {};", packet.content().toString(StandardCharsets.UTF_8), packet.sender().getHostString(), packet.sender().getPort()));
         System.out.println("请输入发送内容：");
         Scanner input=new Scanner(System.in);
         String str=input.next();
